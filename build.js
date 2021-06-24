@@ -35,23 +35,29 @@ function writeCity(city, pbf) {
     
     if (city.altCountry && city.altCountry !== city.country)
         pbf.writeStringField(4, city.altCountry)
+    
+    if (city.alternativeNames)
+        pbf.writeStringField(5, city.alternativeNames)
 
     if (city.municipality)
-        pbf.writeStringField(5, city.municipality)
+        pbf.writeStringField(6, city.municipality)
 
     if (city.municipalitySubdivision)
-        pbf.writeStringField(6, city.municipalitySubdivision)
+        pbf.writeStringField(7, city.municipalitySubdivision)
 
-    pbf.writeStringField(7, city.featureCode)
-    pbf.writeStringField(8, city.adminCode)
+    pbf.writeStringField(8, city.featureCode)
+    pbf.writeStringField(9, city.adminCode)
 
     if (city.population)
-        pbf.writeVarintField(9, city.population)
+        pbf.writeVarintField(10, city.population)
+
+    if (city.tz)
+        pbf.writeVarintField(11, city.tz)
 
     const lat = Math.round(1e5 * city.lat)
     const lon = Math.round(1e5 * city.lon)
-    pbf.writeSVarintField(10, lon - lastLon)
-    pbf.writeSVarintField(11, lat - lastLat)
+    pbf.writeSVarintField(12, lon - lastLon)
+    pbf.writeSVarintField(13, lat - lastLat)
    
    
     lastLat = lat
