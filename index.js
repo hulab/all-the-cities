@@ -38,7 +38,7 @@ function readCity(tag, city, pbf) {
     else if (tag === 8) city.featureCode = pbf.readString()
     else if (tag === 9) city.adminCode = pbf.readString()
     else if (tag === 10) city.population = pbf.readVarint()
-    else if (tag === 11) city.timeZone = pbf.readVarint()
+    else if (tag === 11) city.timeZone = pbf.readString()
     else if (tag === 12) {
         lastLon += pbf.readSVarint()
         city.loc.coordinates[0] = lastLon / 1e5

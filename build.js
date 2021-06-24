@@ -52,7 +52,7 @@ function writeCity(city, pbf) {
         pbf.writeVarintField(10, city.population)
 
     if (city.tz)
-        pbf.writeVarintField(11, city.tz)
+        pbf.writeStringField(11, city.tz)
 
     const lat = Math.round(1e5 * city.lat)
     const lon = Math.round(1e5 * city.lon)
